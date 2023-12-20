@@ -112,7 +112,49 @@ Nah setelah memahami konsep dari Transformers, disini kita akan menyelam ke Dist
 
 ### 5. Performance Evaluation
 Setelah melakukan modeling kita akan masuk ke tahapan terakhir dari penelitian ini yaitu menganalisis performa dari masing masing model. Dua metriks yang diimplementasikan pada kasus ini yaitu confusion matrix dan Classification report. Confusion Matrix memberikan gambaran tentang seberapa baik model mengklasifikasikan data ke dalam kelas yang benar, lalu untuk Classification report memberikan informasi rinci tentang precision, recall, dan F1-score untuk masing masing kelas. 
-![Flow Project](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/full%20cm.png) <br>
+![Flow Project](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/CM.png) <br>
 
+Dari plot confusion matrix tsb sebenarnya kita sudah dapat mengira ngira bahwa model DistilBERT menjadi model dengan performa paling baik, dimana terlihat bahwa informasi jumlah instance yang diklasifikasikan dengan benar lebih banyak dibanding dua model lainnya. Untuk lebih lengkapnya disini kita bisa menggunakan classification report dimana masing masing performa adalah sebagai berikut.
+```
+Classification Report LSTM
+               precision    recall  f1-score   support
 
+           0       0.84      0.86      0.85      3062
+           1       0.90      0.74      0.81      1553
+           2       0.86      0.90      0.88      3617
+
+    accuracy                           0.86      8232
+   macro avg       0.86      0.83      0.85      8232
+weighted avg       0.86      0.86      0.85      8232
+```
+
+```
+Classification Report GRU
+               precision    recall  f1-score   support
+
+           0       0.81      0.89      0.85      3062
+           1       0.90      0.77      0.83      1553
+           2       0.89      0.87      0.88      3617
+
+    accuracy                           0.86      8232
+   macro avg       0.86      0.84      0.85      8232
+weighted avg       0.86      0.86      0.86      8232
+```
+
+```
+Classification Report DistilBERT
+               precision    recall  f1-score   support
+
+           0       0.82      0.93      0.88      3062
+           1       0.91      0.80      0.85      1553
+           2       0.92      0.87      0.89      3617
+
+    accuracy                           0.88      8232
+   macro avg       0.89      0.87      0.87      8232
+weighted avg       0.88      0.88      0.88      8232
+```
+Ketiga pendekatan model yang dilakukan terbilang sudah cukup baik dimana dari nilai precision, recall dan f1-score ada diangka 80an. Bahkan semua model mampu mencapai akurasi diatas 85%. Terlebih model DistilBERT yang mampu "all round ⭐" dengan akurasi tertinggi dan nilai precision, recall, serta f1-score yang tinggi pada setiap kelas. Sebenarnya LSTM dan GRU juga memberikan hasil yang baik, tetapi akurasinya masih sedikit dibawah DistilBERT. 
+
+Rekomendasi: <br>
+Meskipun dari segi performa didapatkan model DistilBERT menjadi model yang terbaik tetapi kita tetap harus mempertimbangkan hal lain seperti kompleksitas model, waktu training, dan compute resource yang ada. Jikalau beberapa alasan tadi memang tidak menjadi masalah maka tidak mengapa untuk menggunakan DistilBERT sebagai model utama, tetapi jika keterbatasan tadi menjadi penghalang saya rasa menggunakan LSTM dan GRU tidak menjadi masalah karena dengan arsitektur yang lebih efisien kita mendapatkan kinerja/performa yang hampir serupa.
 
