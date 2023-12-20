@@ -1,3 +1,5 @@
+![Flow Project](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/twit_cov19.jpg) <br>
+
 # **Latar Belakang Penelitian**
 
 Dalam pesatnya perkembangan era digital dan sosial media, informasi menyebar sangat cepat, terutama terkait dengan isu-isu kesehatan seperti pandemi COVID-19 yang telah kita lalui. Masyarakat seringkali membagikan opini, berita, atau informasi terkait COVID-19 melalui media sosial seperti twitter. Maka dengan memahami dan mengklasifikasikan tweet yang ditulis masyarakat harapannya dapat memberikan wawasan yang berharga terkait sentimen dan pandangan masyarakat terhadap pandemi.
@@ -87,6 +89,7 @@ GRU pertama kali diperkenalkan pada paper yang diangkat oleh Cho dkk (2014) dan 
 #### 4.3 DistilBERT Approach
 Kita masuk ke approach terakhir dari penelitian ini yakni menggunakan DistilBERT, sebelum menyelam lebih jauh ke arsitekur ini ada baiknya kita menyinggung terlebih dahulu konsep dari Transformers. Transformers sendiri adalah salah saty arsitektur neural network yang dikembangkan oleh Google Brain pada tahun 2017. Berbeda dengan pendekatan sebelumnya disini transformers memperkenalkan mekanisme attention (perhatian 💕) untuk memproses input sekuensial. Transformers telah menjadi banyak pondasi model SOTA yang berkembang di sekitar kita seperti LLaMA, Falcon, dan GPT. Arsitektur ini menjawab keterbatasan yang dimiliki model sekuensial sebelumnya seperti LSTM dan GRU. 
 ##### Gambaran Umum Arsitektur
+![Flow Project](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/BERT.png) <br>
 
 - Encoder adalah komponen dari transformers yang bertanggung jawab untuk memproses input dan menghasilkan representasi dari internal dari input, representasi inilah yang nantinya akan digunakan oleh decoder menghasilkan output. Encoder sendiri terdiri dari beberapa lapisan seperti:
   - Embedding layer, lapisan ini akan mengubah suatu input menjadi representasi vektor yang mempunyai panjang yang sama untuk setiap input
@@ -94,6 +97,8 @@ Kita masuk ke approach terakhir dari penelitian ini yakni menggunakan DistilBERT
   - Feed forward layer, lapisan ini menerapkan fungsi aktivasi pada output dari multi head attention layer
   
 - Decoder adalah komponen dari transformer yang bertanggung jawab untuk menghasilkan output dari representasi internal yang dihasilkan oleh encoder. Decoder serupa dengan encoder yang memiliki 3 lapisan penting seperti yang sudah dijelaskan sebelumnya. Berikutnya ada teknik seperti Positional Encoding dan Masked Head Attemtion. Untuk postional encoding, teknik ini digunakan untuk memberikan informasi tentang posisi input ke encoder dan decoder. Informasi ini penting untuk tugas-tugas yang membutuhkan pemahaman tentang urutan sekuensial. Lalu Masked self attention adalah teknik yang digunakan untuk mencegah decoder memperhatikan outputnya sendiri. Teknik ini penting yang mana dapat mencegah decoder dari menghasilkan output yang tidak konsisten.
+
+![Flow Project](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/distilBERT.png) <br>
 
 Nah setelah memahami konsep dari Transformers, disini kita akan menyelam ke DistilBERT. `DistilBERT ini merupakan konsep dari Distillation yang mana konteks ini mengacu pada proses transfer knowladge dari teacher model(model besar) yaitu BERT ke student model(model kecil) yaitu DistilBERT.` Tujuan utamanya adalah mengajarkan model yang lebih kecil untuk meniru distribusi output dari model yang lebih besar. Pada proses distilaasi tersebut student model ditrain menggunakan distribusi probabilitas(soft targets) yang dihasilkan oleh teacher model. Hal ini menjadikan student model memahami distribusi probabilitas dan knowladge yang lebih kaya. Untuk hasil komparasi evaluasi dari BERT dan DistilBERT ditunjukkan pada tabel berikut. 
 | **Aspek**                                       | **BERT**                                              | **DistilBERT**                                        |
