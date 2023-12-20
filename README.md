@@ -39,9 +39,29 @@ Disini saya membagi dataset menjadi subset pelatihan (train) dan pengujian (test
 ### 4. Modeling
 
 #### 4.1 LSTM Approach
+So, Long Short-Term Memory (LSTM) adalah salah satu jenis RNN. RNN sendiri adalah jenis arsitektur dari neural network yang dirancang untuk menangani case data berbasis sekuensial(urutan). Data sekuensial ini sederhananya dimana terdapat suatu data yang mana urutan pada data sebelumnya memberi dampak informasi pada data selanjutnya. Dalam konteks tweet classification ini tentunya tweet dapat dianggap sebagai data sekuensial yang mana frasa yang muncul sebelumnya dapat memengaruhi konteks makna secara kesuluruhan.
+##### Gambaran Umum Arsitektur
+LSTM pertama kali dicetuskan oleh Hochreiter & Schmidhuber (1997) dan hingga kini masih banyak digunakan dan dikembangkan oleh banyak researcher. LSTM sendiri merupakan modifikasi dari RNN dengan memiliki gerbang(gate) yang lebih beragam. Dimana LSTM memiliki 3 gate utama yaitu: forget gate, input gate, dan output gate. Penjelasan singkat:
+- Forget Gate <br>
+    - Jadi input akan menerima berupa konteks(time step) sebelumnya  \$`C_{t-1}`$ di input saat ini \$`x_t`$ 
+    - Berikutnya dengan menghitung nilai sigmoid pada setiap elemen dalam \$`C_{t-1}`$ dengan menggunakan formula $f_t=\sigma\left(W_f \cdot\left[h_{t-1}, x_t\right]+b_f\right)$ , dimana \$`W_f`$ adalah bobot, adalah fungsi \$`\sigma`$ sigmoidnya, \$`\cdot`$ adalah operasi dot product antara weight dan hidden state serta langkah waktu pada t saat ini , serta  \$`b_f`$ adalah nilai dari  biasnya
+    - Dari sini tentunya kita bisa menentukan elemen mana yang akan dibuang atau dipertahankan, dengan \$`f_t`$ mendekati 1 informasi akan tetap dipertahankan dan sebaliknya.
+- Input Gate <br>
+    - Setelah menerima input berupa konteks sebelumnya di \$`C_{t-1}`$
+    - Kita akan menghitung nilai sigmoid(\$`i_t`$) dan kandidat vektor baru (\$`\tilde{C}_t`$) menggunakan formula $i_t=\sigma\left(W_i \cdot\left[h_{t-1}, x_t\right]+b_i\right)$ dan
+      $`\tilde{C}_t=\sigma\left(W_i \cdot\left[h_{t-1}, x_t\right]+b_c\right)`$
+    - Dari output \$i_t$ kita dapat menentukan seberapa banyak nilai yang akan diperbarui
+- Context Update <br>
+    - Dengan menggunakan nilai dari forget gate(\$f_t$) kita akan memutuskan elemen mana dari konteks sebelumnya \$`C_{t-1}`$ yang akan dibuang
+    - Dengan menggunakan nilai dari input gate(\$i_t$) kita akan memutuskan seberapa kandidat vektor baru($`\tilde{C}_t`$) yang akan disertakan  
+    - Pembaruan konteks dapat dilakukan dengan formula seperti ini $C_t=f_t \cdot C_{t-1}+i_t \cdot \tilde{C}_t$
+- Output Gate <br>
+    - Akhirnya kita sampai ke gate terakhir, di gate ini serupa dengan gate gate sebelumnya input akan menerima konteks sebelumnya  di \$`C_{t-1}`$
+    - lalu menghitung nilai sigmoid (\$`o`$) untuk menentukan bagian mana dari konteks yang akan dihasilkan dengan formula $o_t=\sigma\left(W_i \cdot\left[h_{t-1}, x_t\right]+b_o\right)$
+    - Terakhir output $`h_t`$ akan digenerate dengan mengalikan nilai tanh dari konteks saat ini dengan formula \$`h_t = o_t*tanh(C_t)`$
 
-
-
+<br>Terlihat memusingkan wkwk? 😖 <br>
+Baik disini saya akan coba menjelaskan tanpa menggunakan formula, intinya secaara sederhana `LSTM layaknya seorang penjaga perpustakaan`. dimana forget gate diibaratkan penjaga tsb melihat beberapa buku yang sudah tidak relevan dimana buku tersebut akan dibuang dan mempertahankan buku buku yang lebih populer saat ini. Berikutnya untuk input gate, ini layaknya penjaga tsb kedatangan buku baru yang mana dia mendecide apakah buku tersebut akan ditambahkan ke perpustakaannya atau tidak? jika dianggap relevan maka dia akan menambahkannya. Berikutnya Cell State ini seperti catatan terorganisir dari penjaga perpus tsb mencakup detail buku yang telah ditambahkan atau dihapus. Dan yang terakhir untuk Output Gate, ketika ada seseorang yang ingin meminjam buku, penjaga perpus tsb memberikan informasi yang dia simpan tadi untuk merekomendasikan ke peminjam tsb.  
 #### 4.2 GRU Approach
 
 
