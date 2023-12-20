@@ -71,7 +71,9 @@ LSTM pertama kali dicetuskan oleh Hochreiter & Schmidhuber (1997) dan hingga kin
 <br>Terlihat memusingkan wkwk? 😖 <br>
 Baik disini saya akan coba menjelaskan tanpa menggunakan formula, intinya secaara sederhana `LSTM layaknya seorang penjaga perpustakaan`. dimana forget gate diibaratkan penjaga tsb melihat beberapa buku yang sudah tidak relevan dimana buku tersebut akan dibuang dan mempertahankan buku buku yang lebih populer saat ini. Berikutnya untuk input gate, ini layaknya penjaga tsb kedatangan buku baru yang mana dia mendecide apakah buku tersebut akan ditambahkan ke perpustakaannya atau tidak? jika dianggap relevan maka dia akan menambahkannya. Berikutnya Cell State ini seperti catatan terorganisir dari penjaga perpus tsb mencakup detail buku yang telah ditambahkan atau dihapus. Dan yang terakhir untuk Output Gate, ketika ada seseorang yang ingin meminjam buku, penjaga perpus tsb memberikan informasi yang dia simpan tadi untuk merekomendasikan ke peminjam tsb.  
 #### 4.2 GRU Approach
-
+GRU pertama kali diperkenalkan pada paper yang diangkat oleh Cho dkk (2014) dan Chung dkk (2014). Perbedaan arsitektur ini dibannding LSTM adalah lebih simpel dan efisiend dimana GRU memiliki satu cell memori saja, disini GRU mengintegrasikan forget gate dan input gate menjadi satu gate saja yang disebut reset gate. Sehingga pendekatan ini dapat mengurangi kompleksitas dan jumlah parameter yang perlu dikalkulasi. Dari alasan alasan tsb tentunya kita dapat memilih GRU sebagai pilihan saat hanya memiliki sumber daya komputasi yang terbatas.
+##### Gambaran Umum Arsitektur
+    
 
   
 #### 4.3 DistilBERT Approach
