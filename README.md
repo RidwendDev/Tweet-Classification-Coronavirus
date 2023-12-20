@@ -114,4 +114,3 @@ Nah setelah memahami konsep dari Transformers, disini kita akan menyelam ke Dist
 
 
 
-
