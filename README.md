@@ -7,7 +7,7 @@ Penting untuk memahami bagaimana masyarakat merespons COVID-19, apakah dengan ke
 Dalam penelitian yang dilakukan oleh sejumlah ahli komunikasi, analisis sentimen terhadap isu-isu kesehatan masyarakat dapat memberikan gambaran tentang dampak sosial dan psikologis dari pandemi. Melalui proyek klasifikasi tweet tentang COVID-19 yang saya coba bangun ini, diharapkan dapat diperoleh pemahaman yang lebih dalam terkait respons dan pandangan masyarakat melalui media sosial selama pandemi. Hal ini dapat memberikan manfaat bagi pihak-pihak terkait, seperti peneliti, lembaga kesehatan, dan pemerintah, dalam merespon dan mengelola isu-isu kesehatan masyarakat dengan lebih efektif.
 
 ## **Alur Pengerjaan Proyek**
-![Flow Project](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/flow-tweet.png) <br>
+![Flow Project](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/flow-tweet-baru.png) <br>
 
 ### 1. Data Exploration
 
