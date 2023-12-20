@@ -41,6 +41,8 @@ Disini saya membagi dataset menjadi subset pelatihan (train) dan pengujian (test
 #### 4.1 LSTM Approach
 So, Long Short-Term Memory (LSTM) adalah salah satu jenis RNN. RNN sendiri adalah jenis arsitektur dari neural network yang dirancang untuk menangani case data berbasis sekuensial(urutan). Data sekuensial ini sederhananya dimana terdapat suatu data yang mana urutan pada data sebelumnya memberi dampak informasi pada data selanjutnya. Dalam konteks tweet classification ini tentunya tweet dapat dianggap sebagai data sekuensial yang mana frasa yang muncul sebelumnya dapat memengaruhi konteks makna secara kesuluruhan.
 ##### Gambaran Umum Arsitektur
+![Architecture LSTM](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/flow-tweet-baru.png) <br>
+
 LSTM pertama kali dicetuskan oleh Hochreiter & Schmidhuber (1997) dan hingga kini masih banyak digunakan dan dikembangkan oleh banyak researcher. LSTM sendiri merupakan modifikasi dari RNN dengan memiliki gerbang(gate) yang lebih beragam. Dimana LSTM memiliki 3 gate utama yaitu: forget gate, input gate, dan output gate. Penjelasan singkat:
 - Forget Gate <br>
     - Jadi input akan menerima berupa konteks(time step) sebelumnya  \$`C_{t-1}`$ di input saat ini \$`x_t`$ 
