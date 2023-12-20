@@ -111,6 +111,8 @@ Nah setelah memahami konsep dari Transformers, disini kita akan menyelam ke Dist
 
 
 ### 5. Performance Evaluation
+Setelah melakukan modeling kita akan masuk ke tahapan terakhir dari penelitian ini yaitu menganalisis performa dari masing masing model. Dua metriks yang diimplementasikan pada kasus ini yaitu confusion matrix dan Classification report. Confusion Matrix memberikan gambaran tentang seberapa baik model mengklasifikasikan data ke dalam kelas yang benar, lalu untuk Classification report memberikan informasi rinci tentang precision, recall, dan F1-score untuk masing masing kelas. 
+![Flow Project](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/full%20cm.png) <br>
 
 
 
