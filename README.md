@@ -73,6 +73,8 @@ Baik disini saya akan coba menjelaskan tanpa menggunakan formula, intinya secaar
 #### 4.2 GRU Approach
 ##### Gambaran Umum Arsitektur
 GRU pertama kali diperkenalkan pada paper yang diangkat oleh Cho dkk (2014) dan Chung dkk (2014). Perbedaan arsitektur ini dibannding LSTM adalah lebih simpel dan efisiend dimana GRU memiliki satu cell memori saja, disini GRU mengintegrasikan forget gate dan input gate menjadi satu gate saja yang disebut reset gate. Sehingga pendekatan ini dapat mengurangi kompleksitas dan jumlah parameter yang perlu dikalkulasi. Dari alasan alasan tsb tentunya kita dapat memilih GRU sebagai pilihan saat hanya memiliki sumber daya komputasi yang terbatas.Penjelasan singkat:
+
+![Architecture LSTM](https://github.com/RidwendDev/Tweet-Classification-Coronavirus/raw/main/asset/resetGRU.png) <br>
 - Reset Gate <br>
     - Disini kita menentukan sejauh mana kita akan "melupakan" konteks sebelumnya (\$`C _{t−1}`$).
     - Dengan menggunakan fungsi sigmoid untuk menghasilkan $r_t=\sigma\left(W_r \cdot\left[C_{t-1}, x_t\right]+b_r\right)$  dimana \$`W_r`$ adalah bobot, adalah fungsi \$`\sigma`$ sigmoidnya, \$`\cdot`$ adalah operasi dot product antara weight dan cell state serta langkah waktu pada t saat ini , serta  \$`b_r`$ adalah nilai dari  biasnya
@@ -80,6 +82,7 @@ GRU pertama kali diperkenalkan pada paper yang diangkat oleh Cho dkk (2014) dan 
     - Kita akan enentukan sejauh mana konteks sebelumnya \$`C_{t-1}`$ akan diupdate dengan konteks yang baru $`\tilde{C}_t`$
     - Berikutnya menggunakan fungsi sigmoid untuk mengenerate $u_t=\sigma\left(W_u \cdot\left[C_{t-1}, x_t\right]+b_u\right)$
 
+<br>Yang sekiranya masih kesulitan untuk memahami, hampir serupa dengan LSTM untuk analoginya, jadi ada penjaga perpustakaan tetapi disini penjaga perpus hanya melakukan penghapusan catatan buku buku yang dianalogikan dengan reset gate, serta melakukan penambahan catatan baru yang menciptakan cell state yang dianalogikan sebagai update gate.
   
 #### 4.3 DistilBERT Approach
 
