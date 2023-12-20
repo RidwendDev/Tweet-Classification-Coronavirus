@@ -85,6 +85,23 @@ GRU pertama kali diperkenalkan pada paper yang diangkat oleh Cho dkk (2014) dan 
 <br>Yang sekiranya masih kesulitan untuk memahami, hampir serupa dengan LSTM untuk analoginya, jadi ada penjaga perpustakaan tetapi disini penjaga perpus hanya melakukan penghapusan catatan buku buku yang dianalogikan dengan reset gate, serta melakukan penambahan catatan baru yang menciptakan cell state yang dianalogikan sebagai update gate.
   
 #### 4.3 DistilBERT Approach
+Kita masuk ke approach terakhir dari penelitian ini yakni menggunakan DistilBERT, sebelum menyelam lebih jauh ke arsitekur ini ada baiknya kita menyinggung terlebih dahulu konsep dari Transformers. Transformers sendiri adalah salah saty arsitektur neural network yang dikembangkan oleh Google Brain pada tahun 2017. Berbeda dengan pendekatan sebelumnya disini transformers memperkenalkan mekanisme attention (perhatian 💕) untuk memproses input sekuensial. Transformers telah menjadi banyak pondasi model SOTA yang berkembang di sekitar kita seperti LLaMA, Falcon, dan GPT. Arsitektur ini menjawab keterbatasan yang dimiliki model sekuensial sebelumnya seperti LSTM dan GRU. 
+##### Gambaran Umum Arsitektur
+
+- Encoder adalah komponen dari transformers yang bertanggung jawab untuk memproses input dan menghasilkan representasi dari internal dari input, representasi inilah yang nantinya akan digunakan oleh decoder menghasilkan output. Encoder sendiri terdiri dari beberapa lapisan seperti:
+  - Embedding layer, lapisan ini akan mengubah suatu input menjadi representasi vektor yang mempunyai panjang yang sama untuk setiap input
+  - Multi head attention layer, lapisan ini memungkinkan encoder untuk "memperhatikan" semua input secara bersamaan
+  - Feed forward layer, lapisan ini menerapkan fungsi aktivasi pada output dari multi head attention layer
+  
+- Decoder adalah komponen dari transformer yang bertanggung jawab untuk menghasilkan output dari representasi internal yang dihasilkan oleh encoder. Decoder serupa dengan encoder yang memiliki 3 lapisan penting seperti yang sudah dijelaskan sebelumnya. Berikutnya ada teknik seperti Positional Encoding dan Masked Head Attemtion. Untuk postional encoding, teknik ini digunakan untuk memberikan informasi tentang posisi input ke encoder dan decoder. Informasi ini penting untuk tugas-tugas yang membutuhkan pemahaman tentang urutan sekuensial. Lalu Masked self attention adalah teknik yang digunakan untuk mencegah decoder memperhatikan outputnya sendiri. Teknik ini penting yang mana dapat mencegah decoder dari menghasilkan output yang tidak konsisten.
+
+Nah setelah memahami konsep dari Transformers, disini kita akan menyelam ke DistilBERT. `DistilBERT ini merupakan konsep dari Distillation yang mana konteks ini mengacu pada proses transfer knowladge dari teacher model(model besar) yaitu BERT ke student model(model kecil) yaitu DistilBERT.` Tujuan utamanya adalah mengajarkan model yang lebih kecil untuk meniru distribusi output dari model yang lebih besar. Pada proses distilaasi tersebut student model ditrain menggunakan distribusi probabilitas(soft targets) yang dihasilkan oleh teacher model. Hal ini menjadikan student model memahami distribusi probabilitas dan knowladge yang lebih kaya. Untuk hasil komparasi evaluasi dari BERT dan DistilBERT ditunjukkan pada tabel berikut. 
+| **Aspek**                                       | **BERT**                                              | **DistilBERT**                                        |
+|------------------------------------------------|--------------------------------------------------------|-------------------------------------------------------|
+| **Pemahaman Bahasa dan Kemampuan Generalisasi** | Unggul dalam menangkap konteks dua arah.              | Tetap memiliki performa tinggi dengan ukuran 40% lebih kecil.   |
+| **Performa pada Tugas-Tugas Turunan**             | Meraih akurasi tinggi pada berbagai uji benchmark.    | Sedikit kalah dari BERT pada beberapa tugas, misalnya IMDb, dengan ukuran lebih kecil.|
+| **Kompromi Kecepatan/Ukuran**                    | Mahal secara komputasional, memiliki banyak parameter. | 40% lebih sedikit parameter dan sekitar 60% lebih cepat dalam inferensi.  |
+| **Komputasi On-device**                          | Tantangan karena ukuran model besar dan kebutuhan sumber daya. | Lebih efisien di perangkat, 71% lebih cepat pada aplikasi seluler (iPhone 7 plus). Dengan ukuran model hanya: 207 MB.  |
 
 
 
