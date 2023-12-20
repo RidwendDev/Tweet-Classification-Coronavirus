@@ -11,7 +11,7 @@ Dalam penelitian yang dilakukan oleh sejumlah ahli komunikasi, analisis sentimen
 
 ### 1. Data Exploration
 
-Pertama, disini saya melakukan eksplorasi data untuk memahami karakteristik dataset tweet COVID-19. Lakukan langkah-langkah berikut:
+Pertama, disini saya melakukan eksplorasi data untuk memahami karakteristik dataset tweet COVID-19. Adapun part yang dilakukan sebagai berikut.
 - Analisis statistik deskriptif dataset.
 - Identifikasi distribusi target pada data.
 - Visualisasi tren dan pola waktu memposting tweet terkait COVID-19.
@@ -19,7 +19,7 @@ Pertama, disini saya melakukan eksplorasi data untuk memahami karakteristik data
 
 ### 2. Data Cleaning
 
-Lakukan pembersihan data untuk memastikan kualitas data yang baik. Lakukan langkah-langkah berikut:
+Berikutnya melakukan pembersihan data untuk memastikan kualitas data yang baik. 
 
 - Melakukan penghapusan URL
 - Melakukan penghapusan mentions
@@ -34,33 +34,24 @@ Lakukan pembersihan data untuk memastikan kualitas data yang baik. Lakukan langk
 
 ### 3. Data Splitting
 
-Bagi dataset menjadi subset pelatihan (train) dan pengujian (test) untuk melatih dan menguji model. Dengan porsi dari train adalah 80% dan test 20%.
+Disini saya membagi dataset menjadi subset pelatihan (train) dan pengujian (test) untuk melatih dan menguji model. Dengan porsi dari train adalah 80% dan test 20%.
 
 ### 4. Modeling
 
-#### 4.1 DistilBERT Approach
+#### 4.1 LSTM Approach
 
-- Lakukan tokenisasi menggunakan DistilBERT tokenizer.
-- Bangun dan latih model klasifikasi menggunakan DistilBERT.
-- Tentukan arsitektur model, hyperparameter, dan langkah-langkah pelatihan.
 
-#### 4.2 LSTM Approach
 
-- Lakukan tokenisasi dan padding menggunakan LSTM.
-- Bangun dan latih model klasifikasi menggunakan arsitektur LSTM.
-- Tentukan arsitektur model, hyperparameter, dan langkah-langkah pelatihan.
+#### 4.2 GRU Approach
 
-#### 4.3 GRU Approach
 
-- Lakukan tokenisasi dan padding menggunakan GRU.
-- Bangun dan latih model klasifikasi menggunakan arsitektur GRU.
-- Tentukan arsitektur model, hyperparameter, dan langkah-langkah pelatihan.
+  
+#### 4.3 DistilBERT Approach
+
+
 
 ### 5. Performance Evaluation
 
-Evaluasikan kinerja masing-masing model menggunakan metrik yang sesuai seperti akurasi, presisi, recall, dan F1-score. Lakukan langkah-langkah berikut:
 
-- Evaluasi masing-masing model pada subset pengujian.
-- Bandingkan hasil evaluasi untuk menentukan model terbaik.
 
 
